@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/profile_back">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/back_arrow"
+        android:layout_margin="20dp"/>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/signuplogo"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/centerlogo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eople Internet Pvt. Ltd"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/centerlogo"
+        android:layout_marginTop="20dp"
+        android:id="@+id/eopletext"
+        android:textColor="#F9747D"
+        android:fontFamily="Segoe UI"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Internship Assignment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/internship"
+        android:layout_below="@+id/eopletext"
+        android:textColor="#F9747D"
+        android:fontFamily="Segoe UI"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2019"
+        android:layout_below="@+id/internship"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#F9747D"
+        android:id="@+id/year"
+        android:fontFamily="Segoe UI"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Rights Reserved."
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/year"
+        android:textColor="#F9747D"
+        android:fontFamily="Segoe UI"
+        />
+
+
+
+</RelativeLayout>

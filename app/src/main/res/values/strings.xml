@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Eople App</string>
+    <string name="facebook_app_id">196782664575260</string>
+    <string name="fb_login_protocol_scheme">fb196782664575260</string>
+    <string name="Rs">\u20B9</string>
+
+</resources>

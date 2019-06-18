@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal"
+    android:background="@drawable/roundcard"
+    tools:context=".Splash">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/left"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/type"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="INTERMEDIATE"
+                    android:textColor="#575656"
+                    android:fontFamily="sans-serif"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PACK"
+                    android:textSize="50sp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="#575656"
+                    android:fontFamily="sans-serif"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Rs"
+                    android:textSize="80sp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="#d62330"
+                    android:fontFamily="sans-serif"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="80sp"
+                    android:id="@+id/cost"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="#d62330"
+                    android:fontFamily="sans-serif"
+                    />
+
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+</LinearLayout>

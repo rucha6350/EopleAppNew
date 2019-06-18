@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "676350084766",
+    "firebase_url": "https://eople-a94f9.firebaseio.com",
+    "project_id": "eople-a94f9",
+    "storage_bucket": "eople-a94f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676350084766:android:1754e84a12294b4a",
+        "android_client_info": {
+          "package_name": "rucha.sawant.eopleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676350084766-itq56kburfn8db25ah21k0umucnt9neb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rucha.sawant.eopleapp",
+            "certificate_hash": "e7e6b0505218c1bb0ad0c0274c3d3110aade1df0"
+          }
+        },
+        {
+          "client_id": "676350084766-r73iob6s9iminr79beqavci2u9bv258p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgtnE87Jrf6eVbFZU-Kg6KKoSIp0-5Zlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676350084766-r73iob6s9iminr79beqavci2u9bv258p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
