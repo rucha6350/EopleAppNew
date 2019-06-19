@@ -37,6 +37,7 @@
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/name_holder"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -52,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile"
             android:layout_toEndOf="@+id/first_name"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:text="Last Name"
             android:textColor="#FFFFFF"
             android:textSize="14sp"

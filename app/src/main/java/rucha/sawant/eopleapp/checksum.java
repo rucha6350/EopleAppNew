@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
+
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPGService;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class checksum extends AppCompatActivity {
+public class checksum extends AppCompatActivity implements PaytmPaymentTransactionCallback{
     String custid="", orderId="", mid="", txnamount="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class checksum extends AppCompatActivity {
         private ProgressDialog dialog = new ProgressDialog(checksum.this);
         //private String orderId , mid, custid, amt;
         String url ="https://ruchapaytmhost.000webhostapp.com/generateChecksum.php";
-        String varifyurl = "https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp";
+        String varifyurl = "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+orderId;
+        //String varifyurl = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=1234567";
         // "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID"+orderId;
         String CHECKSUMHASH ="";
         @Override
@@ -50,7 +53,7 @@ public class checksum extends AppCompatActivity {
             JSONParser jsonParser = new JSONParser(checksum.this);
             String param=
                     "MID="+mid+
-                            "&ORDER_ID=" + orderId+
+                            "&ORDER_ID=" + orderId +
                             "&CUST_ID="+custid+
                             "&CHANNEL_ID=WAP"+"&TXN_AMOUNT="+txnamount+"&WEBSITE=DEFAULT"+
                             "&CALLBACK_URL="+ varifyurl+"&INDUSTRY_TYPE_ID=Retail";
@@ -74,16 +77,17 @@ public class checksum extends AppCompatActivity {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            PaytmPGService Service = PaytmPGService.getStagingService();
+            PaytmPGService Service = PaytmPGService.getProductionService();
             // when app is ready to publish use production service
             // PaytmPGService  Service = PaytmPGService.getProductionService();
             // now call paytm service here
             //below parameter map is required to construct PaytmOrder object, Merchant should replace below map values with his own values
             HashMap<String, String> paramMap = new HashMap<String, String>();
             //these are mandatory parameters
-            paramMap.put("MID", mid); //MID provided by paytm
+            paramMap.put("MID", "HaWNyx92022787507029"); //MID provided by paytm
             paramMap.put("ORDER_ID", orderId);
             paramMap.put("CUST_ID", custid);
+            paramMap.put("INDUSTRY_TYPE_ID", "Retail");
             paramMap.put("CHANNEL_ID", "WAP");
             paramMap.put("TXN_AMOUNT", txnamount);
             paramMap.put("WEBSITE", "DEFAULT");
@@ -92,53 +96,28 @@ public class checksum extends AppCompatActivity {
             //paramMap.put( "MOBILE_NO" , "9664359034");  // no need
             paramMap.put("CHECKSUMHASH" ,CHECKSUMHASH);
             //paramMap.put("PAYMENT_TYPE_ID" ,"CC");    // no need
-            paramMap.put("INDUSTRY_TYPE_ID", "Retail");
+
             PaytmOrder Order = new PaytmOrder(paramMap);
             Log.e("checksum ", "param "+ paramMap.toString());
             Service.initialize(Order,null);
             // start payment service call here
             Service.startPaymentTransaction(checksum.this, true, true,
-                    new PaytmPaymentTransactionCallback() {
-                        @Override
-                        public void onTransactionResponse(Bundle inResponse) {
-
-                        }
-
-                        @Override
-                        public void networkNotAvailable() {
-
-                        }
-
-                        @Override
-                        public void clientAuthenticationFailed(String inErrorMessage) {
-
-                        }
-
-                        @Override
-                        public void someUIErrorOccurred(String inErrorMessage) {
-
-                        }
-
-                        @Override
-                        public void onErrorLoadingWebPage(int iniErrorCode, String inErrorMessage, String inFailingUrl) {
-
-                        }
-
-                        @Override
-                        public void onBackPressedCancelTransaction() {
-
-                        }
-
-                        @Override
-                        public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
-
-                        }
-                    });
+                    checksum.this);
         }
     }
-   /* @Override
+    @Override
     public void onTransactionResponse(Bundle bundle) {
         Log.e("checksum ", " respon true " + bundle.toString());
+        if(bundle.toString().contains("STATUS=TXN_SUCCESS")){
+            Intent intent = new Intent(checksum.this, Transaction_status.class);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(checksum.this, "Transaction Failed", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(checksum.this, Main.class);
+            startActivity(intent);
+            finish();
+        }
     }
     @Override
     public void networkNotAvailable() {
@@ -161,5 +140,5 @@ public class checksum extends AppCompatActivity {
     @Override
     public void onTransactionCancel(String s, Bundle bundle) {
         Log.e("checksum ", "  transaction cancel " );
-    }*/
+    }
 }

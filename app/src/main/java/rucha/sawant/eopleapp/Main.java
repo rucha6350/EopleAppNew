@@ -1,6 +1,8 @@
 package rucha.sawant.eopleapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -109,7 +111,7 @@ public class Main extends AppCompatActivity {
                 lp.copyFrom(alertDialog.getWindow().getAttributes());
                 lp.width = 300;
                 lp.height = 500;
-                lp.x=70;
+                lp.x=25;
                 lp.y=100;
                 alertDialog.getWindow().setAttributes(lp);
 
@@ -174,6 +176,19 @@ public class Main extends AppCompatActivity {
     }
 
     private void loadData(){
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+        progressDialog.setCancelable(true);
+        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                onBackPressed();
+            }
+        });
+
         listItems.clear();
         db.collection("data")
                 .get()
@@ -188,6 +203,7 @@ public class Main extends AppCompatActivity {
                                 recyclerView.setAdapter(adapter);
 
                             }
+                            progressDialog.dismiss();
 
                         } else {
                             Log.d("CHECK", "Error getting documents: ", task.getException());
